@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Notes</h1>
+    <p class="count" id="count" aria-live="polite"></p>
+  </header>
+
+  <div class="banner" id="banner" hidden>
+    Notes are stored temporarily on this deployment and can disappear. Connect a Redis database in Vercel (Storage tab) to keep them.
+  </div>
+
+  <main class="layout">
+    <form class="composer" id="form" autocomplete="off">
+      <h2>New note</h2>
+
+      <label for="title">Title</label>
+      <input id="title" name="title" type="text" maxlength="100" placeholder="Grocery run">
+
+      <label for="content">Note</label>
+      <textarea id="content" name="content" rows="6" maxlength="2000" placeholder="Write something down"></textarea>
+
+      <fieldset class="colors">
+        <legend>Colour</legend>
+        <label class="swatch yellow"><input type="radio" name="color" value="yellow" checked><span>Yellow</span></label>
+        <label class="swatch mint"><input type="radio" name="color" value="mint"><span>Mint</span></label>
+        <label class="swatch sky"><input type="radio" name="color" value="sky"><span>Sky</span></label>
+        <label class="swatch rose"><input type="radio" name="color" value="rose"><span>Rose</span></label>
+        <label class="swatch lilac"><input type="radio" name="color" value="lilac"><span>Lilac</span></label>
+      </fieldset>
+
+      <p class="error" id="error" role="alert" hidden></p>
+      <button type="submit" id="save">Save note</button>
+    </form>
+
+    <section class="board" aria-label="Your notes">
+      <p class="status" id="status">Loading notes…</p>
+      <ul class="grid" id="grid"></ul>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
